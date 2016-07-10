@@ -13,8 +13,11 @@ Have fun!
 #TODO
 
 -There's no routing in place yet, so you won't be able to link to a specific comic (unless you link to the actual image).
+
 -Buttons need to be deactivated when there is no next/last or previous/first comics available.
+
 -Preloading images would be nice ^_^
+
 -Create a json file automaticaly from the images in the assets folder.
 
 
