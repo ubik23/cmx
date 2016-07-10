@@ -6,4 +6,4 @@ You might want to translate the button names as I've created this project to dis
 
 There's no routing in place yet, so you won't be able to link to a specific comic yet (unless you link to the actual image).
 
-
+Translations in js/main.js
