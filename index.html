@@ -7,11 +7,40 @@
         .controls button {
             padding: 5px 0;
         }
+
+        .comic-container{
+          display:inline-block;
+          background-color:white;
+          box-sizing:border-box;
+          width:80%;
+          max-width:780px;
+          min-width:470px;
+          border-radius:12px;
+          moz-border-radius:12px;
+          padding:15px 0;
+        }
+
+        .comic-container img{
+        margin:0 auto;min-width:470px;
+        }
+
+        @media(max-width: 470px ){
+          .comic-container, .comic-container img{
+            width: 100%;
+            min-width: auto;
+          }
+
+          .controls button{
+            display: block;
+            width: 95%;
+            margin: 0 auto;
+          }
+        }
     </style>
   </head>
   <body style="width:100%;text-align:center;margin:15px 0;">
-      <div style="display:inline-block;background-color:white;box-sizing:border-box;width:80%;max-width:780px;min-width:470px;border-radius:12px;moz-border-radius:12px;padding:15px 0;">
-            <img id="comic" src="assets/don-de-soi.png" alt="" style="margin:0 auto;min-width:470px;min-height:394px"></img>
+      <div class="comic-container">
+            <img id="comic" src="assets/don-de-soi.png" alt=""></img>
           <div class="controls" style="text-align:center;"><button class="first">|&lt; First</button><button class="prev">&lt; Previous</button><button class="random">Random</button><button class="next">Next &gt;</button><button class="last">Last  &gt;|</button></div>
       </div>
     <script src="js/main.js"></script>
