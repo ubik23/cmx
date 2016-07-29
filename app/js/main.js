@@ -63,17 +63,28 @@ var prevBtn = document.querySelectorAll(".prev"),
                 r = e, s()
             },
             p = function() {
-                r = Math.floor(Math.random() * e), s()
+                r = n.indexOf(preloadRandom.getAttribute("data-file")), randomComic = preCalcRandom(), s();
+
             };
         l(prevBtn, i), l(nextBtn, a), l(firstBtn, u), l(lastBtn, c), l(randomBtn, p);
         var s = function() {
             o.src = t + n[r]
             preload();
         }
+        var preCalcRandom = function () {
+            var rndNum = r;
+            while (rndNum == r){
+                rndNum = Math.floor(Math.random() * e);
+            }
+            return rndNum;
+        }
         var preload = function() {
             nextComic = r + 1;
             if (nextComic > e) {nextComic = e};
-            preloadFirst.src = t + n[0], preloadPrevious.src = t + n[r -1], preloadNext.src = t + n[nextComic], preloadLast.src = t + n[e];
+            previousComic = r - 1;
+            if (previousComic < 0) {previousComic = 0};
+            preloadFirst.src = t + n[0], preloadPrevious.src = t + n[previousComic], preloadRandom.src = t + n[randomComic], preloadRandom.setAttribute("data-file", n[randomComic]), preloadNext.src = t + n[nextComic], preloadLast.src = t + n[e];
         }
+        var randomComic = preCalcRandom();
         preload();
     }();
