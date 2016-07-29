@@ -20,6 +20,10 @@
 *.tar
 *.zip
 
+# Specific files #
+##################
+index.htm
+
 # Logs and databases #
 ######################
 *.log
@@ -35,3 +39,5 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+

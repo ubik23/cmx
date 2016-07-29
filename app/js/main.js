@@ -6,6 +6,7 @@ var translation = {
     last: "Dernier &gt;|"
 };
 
+var t = "assets/";
 
 var n = [
     "le-slogan.png",
@@ -25,18 +26,25 @@ var n = [
     "c-est-pas-gai.png",
     "le-truc.png",
     "fin-de-partie.png",
-    "don-de-soi.png"
+    "don-de-soi.png",
+    "festival.png",
+    "infortunes-du-rire.png",
+    "cuisses.png"
 ];
 
 var prevBtn = document.querySelectorAll(".prev"),
     nextBtn = document.querySelectorAll(".next"),
     firstBtn = document.querySelectorAll(".first"),
     lastBtn = document.querySelectorAll(".last"),
-    randomBtn = document.querySelectorAll(".random");
+    randomBtn = document.querySelectorAll(".random"),
+    preloadFirst = document.querySelector(".preload__first"),
+    preloadPrevious = document.querySelector(".preload__previous"),
+    preloadRandom = document.querySelector(".preload__random"),
+    preloadNext = document.querySelector(".preload__next");
+    preloadLast = document.querySelector(".preload__last");
     prevBtn[0].innerHTML = translation.previous, nextBtn[0].innerHTML = translation.next, firstBtn[0].innerHTML = translation.first, lastBtn[0].innerHTML = translation.last, randomBtn[0].innerHTML = translation.random,
     function() {
-        var t = "assets/",
-            e = n.length - 1,
+        var e = n.length - 1,
             r = e,
             o = document.querySelector("#comic"),
             l = function(n, t) {
@@ -60,5 +68,12 @@ var prevBtn = document.querySelectorAll(".prev"),
         l(prevBtn, i), l(nextBtn, a), l(firstBtn, u), l(lastBtn, c), l(randomBtn, p);
         var s = function() {
             o.src = t + n[r]
+            preload();
         }
+        var preload = function() {
+            nextComic = r + 1;
+            if (nextComic > e) {nextComic = e};
+            preloadFirst.src = t + n[0], preloadPrevious.src = t + n[r -1], preloadNext.src = t + n[nextComic], preloadLast.src = t + n[e];
+        }
+        preload();
     }();
