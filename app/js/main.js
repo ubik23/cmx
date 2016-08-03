@@ -44,8 +44,12 @@ var prevBtn = document.querySelectorAll(".prev"),
     preloadLast = document.querySelector(".preload__last");
     prevBtn[0].innerHTML = translation.previous, nextBtn[0].innerHTML = translation.next, firstBtn[0].innerHTML = translation.first, lastBtn[0].innerHTML = translation.last, randomBtn[0].innerHTML = translation.random,
     function() {
+        var popped = ('state' in window.history), initialURL = location.pathname;
+        console.log(popped);
+        console.log(initialURL);
+        console.log(n.indexOf(initialURL + '.png'));
         var e = n.length - 1,
-            r = e,
+            r = n.indexOf(initialURL.slice(1) + '.png') || e,
             o = document.querySelector("#comic"),
             l = function(n, t) {
                 for (var e = n.length; e > 0;) e--, n[e].addEventListener("click", t)
@@ -66,10 +70,13 @@ var prevBtn = document.querySelectorAll(".prev"),
                 r = n.indexOf(preloadRandom.getAttribute("data-file")), randomComic = preCalcRandom(), s();
 
             };
+            console.log('r',r);
         l(prevBtn, i), l(nextBtn, a), l(firstBtn, u), l(lastBtn, c), l(randomBtn, p);
         var s = function() {
-            o.src = t + n[r]
+            o.src = t + n[r];
+            currentURL = n[r].slice(0, -4);
             preload();
+            history.pushState(null, null, currentURL);
         }
         var preCalcRandom = function () {
             var rndNum = r;
@@ -85,6 +92,7 @@ var prevBtn = document.querySelectorAll(".prev"),
             if (previousComic < 0) {previousComic = 0};
             preloadFirst.src = t + n[0], preloadPrevious.src = t + n[previousComic], preloadRandom.src = t + n[randomComic], preloadRandom.setAttribute("data-file", n[randomComic]), preloadNext.src = t + n[nextComic], preloadLast.src = t + n[e];
         }
+        if (r != e){s()};
         var randomComic = preCalcRandom();
         preload();
     }();

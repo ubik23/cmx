@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var uglify = require('gulp-uglify');
 var runSequence = require('run-sequence');
 var browserSync = require('browser-sync').create();
+var spa         = require("browser-sync-spa");
 var imagemin = require('gulp-imagemin');
 var cache = require('gulp-cache');
 var del = require('del');
@@ -49,6 +50,16 @@ gulp.task('copy', function() {
       stream: true
     }))
 });
+
+browserSync.use(spa({
+
+    // Options to pass to connect-history-api-fallback.
+    // If your application already provides fallback urls (such as an existing proxy server),
+    // this value can be set to false to omit using the connect-history-api-fallback middleware entirely.
+    history: {
+        index: '/index.html'
+    }
+}));
 
 gulp.task('browserSync', function() {
   browserSync.init({

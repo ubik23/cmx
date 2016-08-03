@@ -4,6 +4,19 @@
     <meta charset="UTF-8">
     <title>Québec Cité</title>
     <style>
+        h1, h2 {
+            font-family: "Courier New", Courier, monospace;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin: 0.33em 0;
+        }
+
+        h2 {
+            font-size: 18px;
+        }
+
         .controls button {
             padding: 10px 5px;
         }
@@ -18,6 +31,7 @@
           border-radius:12px;
           moz-border-radius:12px;
           padding:15px 0;
+          margin: 0 0 15px 0;
         }
 
         .comic-container img{
@@ -47,16 +61,49 @@
   </head>
   <body style="width:100%;text-align:center;margin:15px 0;">
       <div class="comic-container">
-            <img id="comic" src="assets/festival.png" alt=""></img>
+        <h1>Québec Cité</h1>
+        <h2>Un nouveau strip à tous les mercredis de la semaine.</h2>
+        </div>
+      <div class="comic-container">
+            <img id="comic" src="assets/cuisses.png" alt=""></img>
           <div class="controls" style="text-align:center;"><button class="first">|&lt; First</button><button class="prev">&lt; Previous</button><button class="random">Random</button><button class="next">Next &gt;</button><button class="last">Last  &gt;|</button></div>
       </div>
+    <!-- Begin MailChimp Signup Form -->
+    <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif;}
+        /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+           We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+    </style>
+    <div id="mc_embed_signup" class="comic-container">
+    <form action="//quebeccite.us5.list-manage.com/subscribe/post?u=ecf5dd5779b0ea1993c6bfccc&amp;id=ef29a862d8" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+        <div id="mc_embed_signup_scroll">
+        <label for="mce-EMAIL">Inscrivez-vous à notre Nympholettre.</label>
+        <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="mon@courriel.qc.ca" required>
+        <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_ecf5dd5779b0ea1993c6bfccc_ef29a862d8" tabindex="-1" value=""></div>
+        <div class="clear"><input type="submit" value="J'm'abonne!" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+        </div>
+    </form>
+    </div>
     <div class="preload__container">
         <img class="preload__first" src="" alt=""></img>
         <img class="preload__previous" src="" alt=""></img>
-        <img class="preload__random" src="" alt=""></img>
+        <img class="preload__random" src="" alt="" data-file=""></img>
         <img class="preload__next" src="" alt=""></img>
         <img class="preload__last" src="" alt=""></img>
     </div>
-    <script src="js/main.js"></script>
+    <!--End mc_embed_signup-->
+    <script defer src="js/main.js"></script>
+   <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-64040545-1', 'auto');
+  ga('send', 'pageview');
+
+</script> 
   </body>
 </html>
