@@ -29,7 +29,8 @@ var n = [
     "don-de-soi.png",
     "festival.png",
     "infortunes-du-rire.png",
-    "cuisses.png"
+    "cuisses.png",
+    "sante.png"
 ];
 
 var prevBtn = document.querySelectorAll(".prev"),
