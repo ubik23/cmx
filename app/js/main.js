@@ -45,12 +45,9 @@ var prevBtn = document.querySelectorAll(".prev"),
     preloadLast = document.querySelector(".preload__last");
     prevBtn[0].innerHTML = translation.previous, nextBtn[0].innerHTML = translation.next, firstBtn[0].innerHTML = translation.first, lastBtn[0].innerHTML = translation.last, randomBtn[0].innerHTML = translation.random,
     function() {
-        var popped = ('state' in window.history), initialURL = location.pathname;
-        console.log(popped);
-        console.log(initialURL);
-        console.log(n.indexOf(initialURL + '.png'));
+        var initialURL = location.pathname;
         var e = n.length - 1,
-            r = n.indexOf(initialURL.slice(1) + '.png') || e,
+            r = n.indexOf(initialURL.slice(1) + '.png'),
             o = document.querySelector("#comic"),
             l = function(n, t) {
                 for (var e = n.length; e > 0;) e--, n[e].addEventListener("click", t)
@@ -71,7 +68,7 @@ var prevBtn = document.querySelectorAll(".prev"),
                 r = n.indexOf(preloadRandom.getAttribute("data-file")), randomComic = preCalcRandom(), s();
 
             };
-            console.log('r',r);
+            if (r < 0) {r = e};
         l(prevBtn, i), l(nextBtn, a), l(firstBtn, u), l(lastBtn, c), l(randomBtn, p);
         var s = function() {
             o.src = t + n[r];
@@ -96,4 +93,19 @@ var prevBtn = document.querySelectorAll(".prev"),
         if (r != e){s()};
         var randomComic = preCalcRandom();
         preload();
+        window.addEventListener('popstate', function(){
+            var currentComic = r;
+            var currentURL = location.pathname;
+            //r = n.indexOf(currentURL.slice(1) + '.png'),
+            if (currentURL.slice(1) == '') {
+                r = e;
+            } else {
+                r = n.indexOf(currentURL.slice(1) + '.png');
+            }
+            if (r == currentComic) {
+                return;
+            };
+
+            o.src = t + n[r];
+        });
     }();
