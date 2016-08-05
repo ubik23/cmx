@@ -22,6 +22,8 @@ Have fun!
 
 -Enable Swiping on phones.
 
--Move comic data to a json file to enable metadate for each strip/page.
+-Move comic data to a json file to enable metadata for each strip/page.
 
 -Create a json file automaticaly from the images in the assets folder.
+
+-Add about page (including functionality for more pages routed with js as a spa).
