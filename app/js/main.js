@@ -1,3 +1,4 @@
+// @source:https://github.com/ubik23/cmx/blob/master/License.md
 var translation = {
     first: "|&lt; Premier",
     previous: "&lt; Précédent",
