@@ -1,4 +1,4 @@
-// @source:http://quebeccite.com/js/main.js
+// @source:http://quebeccite.com/js/source.js
 /*@licstart  The following is the entire license notice for the
 JavaScript code in this page.
 
