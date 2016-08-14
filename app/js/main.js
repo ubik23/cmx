@@ -1,8 +1,9 @@
-// @source:http://quebeccite.com/js/source.js
-/*@licstart  The following is the entire license notice for the
+// @source: http://quebeccite.com/js/source.js
+/*
+@licstart  The following is the entire license notice for the
 JavaScript code in this page.
 
-    Copyright (C) 2016  Frédéric Guimont
+    Copyright (C) 2016  Frederic Guimont
 
     The JavaScript code in this page is free software: you can
     redistribute it and/or modify it under the terms of the GNU
@@ -19,7 +20,8 @@ JavaScript code in this page.
     through which recipients can access the Corresponding Source.
 
 @licend  The above is the entire license notice
-for the JavaScript code in this page.*/
+for the JavaScript code in this page.
+*/
 
 var translation = {
     first: "|&lt; Premier",
@@ -53,7 +55,8 @@ var n = [
     "festival.png",
     "infortunes-du-rire.png",
     "cuisses.png",
-    "sante.png"
+    "sante.png",
+    "automobilistes.png"
 ];
 
 var prevBtn = document.querySelectorAll(".prev"),
@@ -64,7 +67,7 @@ var prevBtn = document.querySelectorAll(".prev"),
     preloadFirst = document.querySelector(".preload__first"),
     preloadPrevious = document.querySelector(".preload__previous"),
     preloadRandom = document.querySelector(".preload__random"),
-    preloadNext = document.querySelector(".preload__next");
+    preloadNext = document.querySelector(".preload__next"),
     preloadLast = document.querySelector(".preload__last");
     prevBtn[0].innerHTML = translation.previous, nextBtn[0].innerHTML = translation.next, firstBtn[0].innerHTML = translation.first, lastBtn[0].innerHTML = translation.last, randomBtn[0].innerHTML = translation.random,
     function() {
