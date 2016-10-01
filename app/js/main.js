@@ -109,37 +109,29 @@ var prevBtn = document.querySelectorAll(".prev"),
             preload();
             history.pushState(null, null, currentURL);
             // Disable first/last and next/previous if last/first comic
-            console.log('r', r);
             if (r === e){disableLast()} else {enableLast()};
             if (r === 0){disableFirst()} else {enableFirst()};
         }
         var disableLast = function () {
-            console.log('disabled last/next buttons')
             var isLastDisabled = document.querySelector('.disable--last');
             if (!isLastDisabled){
                 document.querySelector('.controls').classList.add("disable--last");
             };
         };
         var enableLast = function () {
-            console.log('enabled last/next buttons')
             var isLastDisabled = document.querySelector('.disable--last');
-            console.log('isLastDisabled', isLastDisabled);
             if (isLastDisabled){
                 document.querySelector('.controls').classList.remove("disable--last");
             };
         };
         var disableFirst = function () {
-            console.log('disabled first/previous buttons')
             var isFirstDisabled = document.querySelector('.disable--first');
-            console.log('isFirstDisabled', isFirstDisabled);
             if (!isFirstDisabled){
                 document.querySelector('.controls').classList.add("disable--first");
             };
         };
         var enableFirst = function () {
-            console.log('enabled first/previous buttons')
             var isFirstDisabled = document.querySelector('.disable--first');
-            console.log('isFirstDisabled', isFirstDisabled);
             if (isFirstDisabled){
                 document.querySelector('.controls').classList.remove("disable--first");
             };
@@ -164,16 +156,18 @@ var prevBtn = document.querySelectorAll(".prev"),
         window.addEventListener('popstate', function(){
             var currentComic = r;
             var currentURL = location.pathname;
-            //r = n.indexOf(currentURL.slice(1) + '.png'),
             if (currentURL.slice(1) == '') {
                 r = e;
             } else {
                 r = n.indexOf(currentURL.slice(1) + '.png');
+
             }
             if (r == currentComic) {
                 return;
             };
 
             o.src = t + n[r];
+            if (r === e){disableLast()} else {enableLast()};
+            if (r === 0){disableFirst()} else {enableFirst()};
         });
     }();
