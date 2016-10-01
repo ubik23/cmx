@@ -34,7 +34,7 @@ var translation = {
 var t = "assets/";
 
 var n = [
-    "le-slogan.png",
+    "slogan.png",
     "bd-en-ligne.png",
     "l-austerite.png",
     "la-pub.png",
@@ -43,12 +43,12 @@ var n = [
     "un-cafe.png",
     "fiat-luxe.png",
     "c-ta-crere.png",
-    "publi-cite.png",
     "time-out.png",
+    "je-like-pas.png",
     "de-pis-en-pis.png",
     "toune.png",
     "le-futur-ete.png",
-    "c-est-pas-gai.png",
+    "c-est_pas_gai.png",
     "le-truc.png",
     "fin-de-partie.png",
     "don-de-soi.png",
@@ -56,7 +56,14 @@ var n = [
     "infortunes-du-rire.png",
     "cuisses.png",
     "sante.png",
-    "automobilistes.png"
+    "automobilistes.png",
+    "but-d-jouet.png",
+    "qui-rira-le-dernier.png",
+    "cadeau.png",
+    "universel.png",
+    "exil.png",
+    "mise-a-jour.png",
+    "presentations.png"
 ];
 
 var prevBtn = document.querySelectorAll(".prev"),
@@ -101,7 +108,42 @@ var prevBtn = document.querySelectorAll(".prev"),
             currentURL = n[r].slice(0, -4);
             preload();
             history.pushState(null, null, currentURL);
+            // Disable first/last and next/previous if last/first comic
+            console.log('r', r);
+            if (r === e){disableLast()} else {enableLast()};
+            if (r === 0){disableFirst()} else {enableFirst()};
         }
+        var disableLast = function () {
+            console.log('disabled last/next buttons')
+            var isLastDisabled = document.querySelector('.disable--last');
+            if (!isLastDisabled){
+                document.querySelector('.controls').classList.add("disable--last");
+            };
+        };
+        var enableLast = function () {
+            console.log('enabled last/next buttons')
+            var isLastDisabled = document.querySelector('.disable--last');
+            console.log('isLastDisabled', isLastDisabled);
+            if (isLastDisabled){
+                document.querySelector('.controls').classList.remove("disable--last");
+            };
+        };
+        var disableFirst = function () {
+            console.log('disabled first/previous buttons')
+            var isFirstDisabled = document.querySelector('.disable--first');
+            console.log('isFirstDisabled', isFirstDisabled);
+            if (!isFirstDisabled){
+                document.querySelector('.controls').classList.add("disable--first");
+            };
+        };
+        var enableFirst = function () {
+            console.log('enabled first/previous buttons')
+            var isFirstDisabled = document.querySelector('.disable--first');
+            console.log('isFirstDisabled', isFirstDisabled);
+            if (isFirstDisabled){
+                document.querySelector('.controls').classList.remove("disable--first");
+            };
+        };
         var preCalcRandom = function () {
             var rndNum = r;
             while (rndNum == r){
