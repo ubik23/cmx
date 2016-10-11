@@ -63,7 +63,8 @@ var n = [
     "universel.png",
     "exil.png",
     "mise-a-jour.png",
-    "presentations.png"
+    "presentations.png",
+    "pornophiles.png"
 ];
 
 var prevBtn = document.querySelectorAll(".prev"),
