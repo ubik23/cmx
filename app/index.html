@@ -15,7 +15,7 @@
         body {
             width:100%;
             text-align:center;
-            margin:10px 0;
+            margin: 10px 0;
             background: #fff url('bg-quebec-cite.svg');
             animation: anim-bg-color 0.2s 0.3s ease-in-out forwards;
         }
@@ -50,6 +50,7 @@
           moz-border-radius:12px;
           margin: 0 auto 10px auto;
           overflow: hidden;
+          transition: border-radius 0.2s ease-in-out, margin 0.2s ease-in-out, padding 0.2s ease-in-out, width 0.2s ease-in-out;
         }
         .comic-container {padding: 15px 0;}
         .banner-container {padding: 15px 0 0 0;}
@@ -62,9 +63,15 @@
         }
 
         @media(max-width: 587px ){
+            body {
+                margin: 0;
+            }
           .comic-container, .banner-container, .email-container {
-            width: 95%;
+            width: 100%;
             min-width: auto;
+            padding: 0;
+            margin: 0;
+            border-radius:0;
           }
 
           .controls button{
@@ -249,7 +256,7 @@
         </svg>
       </div>
       <div class="comic-container">
-            <img id="comic" src="assets/pornophiles.png" alt=""></img>
+            <img id="comic" src="assets/faux-departs.png" alt=""></img>
           <div class="controls disable--last" style="text-align:center;"><button class="first">|&lt; First</button><button class="prev">&lt; Previous</button><button class="random">Random</button><button class="next">Next &gt;</button><button class="last">Last  &gt;|</button></div>
       </div>
     <!-- Begin MailChimp Signup Form -->
