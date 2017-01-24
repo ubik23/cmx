@@ -65,7 +65,11 @@ var n = [
     "mise-a-jour.png",
     "presentations.png",
     "pornophiles.png",
-    "faux-departs.png"
+    "faux-departs.png",
+    "zero-probleme.png",
+    "tribut.png",
+    "chocolat.png",
+    "la-joke.png"
 ];
 
 var prevBtn = document.querySelectorAll(".prev"),
