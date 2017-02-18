@@ -31,45 +31,45 @@ var translation = {
     last: "Dernier &gt;|"
 };
 
-var t = "assets/";
+var folder = "assets/";
 
-var n = [
-    "slogan.png",
-    "bd-en-ligne.png",
-    "l-austerite.png",
-    "la-pub.png",
-    "du-boulot.png",
-    "charlie.png",
-    "un-cafe.png",
-    "fiat-luxe.png",
-    "c-ta-crere.png",
-    "time-out.png",
-    "je-like-pas.png",
-    "de-pis-en-pis.png",
-    "toune.png",
-    "le-futur-ete.png",
-    "c-est_pas_gai.png",
-    "le-truc.png",
-    "fin-de-partie.png",
-    "don-de-soi.png",
-    "festival.png",
-    "infortunes-du-rire.png",
-    "cuisses.png",
-    "sante.png",
-    "automobilistes.png",
-    "but-d-jouet.png",
-    "qui-rira-le-dernier.png",
-    "cadeau.png",
-    "universel.png",
-    "exil.png",
-    "mise-a-jour.png",
-    "presentations.png",
-    "pornophiles.png",
-    "faux-departs.png",
-    "zero-probleme.png",
-    "tribut.png",
-    "chocolat.png",
-    "la-joke.png"
+var comicChapters = [
+    ["slogan.png"],
+    ["bd-en-ligne.png"],
+    ["l-austerite.png"],
+    ["la-pub.png"],
+    ["du-boulot.png"],
+    ["charlie.png"],
+    ["un-cafe.png"],
+    ["fiat-luxe.png"],
+    ["c-ta-crere.png"],
+    ["time-out.png"],
+    ["je-like-pas.png"],
+    ["de-pis-en-pis.png"],
+    ["toune.png"],
+    ["le-futur-ete.png"],
+    ["c-est_pas_gai.png"],
+    ["le-truc.png"],
+    ["fin-de-partie.png"],
+    ["don-de-soi.png"],
+    ["festival.png"],
+    ["infortunes-du-rire.png"],
+    ["cuisses.png"],
+    ["sante.png"],
+    ["automobilistes.png"],
+    ["but-d-jouet.png"],
+    ["qui-rira-le-dernier.png"],
+    ["cadeau.png"],
+    ["universel.png"],
+    ["exil.png"],
+    ["mise-a-jour.png"],
+    ["presentations.png"],
+    ["pornophiles.png"],
+    ["faux-departs.png"],
+    ["zero-probleme.png"],
+    ["tribut.png"],
+    ["chocolat.png"],
+    ["la-joke.png"]
 ];
 
 var prevBtn = document.querySelectorAll(".prev"),
@@ -85,38 +85,38 @@ var prevBtn = document.querySelectorAll(".prev"),
     prevBtn[0].innerHTML = translation.previous, nextBtn[0].innerHTML = translation.next, firstBtn[0].innerHTML = translation.first, lastBtn[0].innerHTML = translation.last, randomBtn[0].innerHTML = translation.random,
     function() {
         var initialURL = location.pathname;
-        var e = n.length - 1,
-            r = n.indexOf(initialURL.slice(1) + '.png'),
+        var numberOfChapters = comicChapters.length - 1,
+            indexOfChapter = comicChapters.indexOf(initialURL.slice(1) + '.png'),
             o = document.querySelector("#comic"),
-            l = function(n, t) {
-                for (var e = n.length; e > 0;) e--, n[e].addEventListener("click", t)
+            l = function(comicChapters, folder) {
+                for (var numberOfChapters = comicChapters.length; numberOfChapters > 0;) numberOfChapters--, comicChapters[numberOfChapters].addEventListener("click", t)
             },
             i = function() {
-                r -= 1, 0 > r && (r = 0), s()
+                indexOfChapter -= 1, 0 > indexOfChapter && (indexOfChapter = 0), s()
             },
             a = function() {
-                r += 1, r > e && (r = e), s()
+                indexOfChapter += 1, indexOfChapter > numberOfChapters && (indexOfChapter = numberOfChapters), s()
             },
             u = function() {
-                r = 0, s()
+                indexOfChapter = 0, s()
             },
             c = function() {
-                r = e, s()
+                indexOfChapter = numberOfChapters, s()
             },
             p = function() {
-                r = n.indexOf(preloadRandom.getAttribute("data-file")), randomComic = preCalcRandom(), s();
+                indexOfChapter = comicChapters.indexOf(preloadRandom.getAttribute("data-file")), randomComic = preCalcRandom(), s();
 
             };
-            if (r < 0) {r = e};
+            if (indexOfChapter < 0) {indexOfChapter = numberOfChapters};
         l(prevBtn, i), l(nextBtn, a), l(firstBtn, u), l(lastBtn, c), l(randomBtn, p);
         var s = function() {
-            o.src = t + n[r];
-            currentURL = n[r].slice(0, -4);
+            o.src = folder + comicChapters[indexOfChapter];
+            currentURL = comicChapters[indexOfChapter].slice(0, -4);
             preload();
             history.pushState(null, null, currentURL);
             // Disable first/last and next/previous if last/first comic
-            if (r === e){disableLast()} else {enableLast()};
-            if (r === 0){disableFirst()} else {enableFirst()};
+            if (indexOfChapter === numberOfChapters){disableLast()} else {enableLast()};
+            if (indexOfChapter === 0){disableFirst()} else {enableFirst()};
         }
         var disableLast = function () {
             var isLastDisabled = document.querySelector('.disable--last');
@@ -143,37 +143,37 @@ var prevBtn = document.querySelectorAll(".prev"),
             };
         };
         var preCalcRandom = function () {
-            var rndNum = r;
-            while (rndNum == r){
-                rndNum = Math.floor(Math.random() * e);
+            var rndNum = indexOfChapter;
+            while (rndNum == indexOfChapter){
+                rndNum = Math.floor(Math.random() * numberOfChapters);
             }
             return rndNum;
         }
         var preload = function() {
-            nextComic = r + 1;
-            if (nextComic > e) {nextComic = e};
-            previousComic = r - 1;
+            nextComic = indexOfChapter + 1;
+            if (nextComic > numberOfChapters) {nextComic = numberOfChapters};
+            previousComic = indexOfChapter - 1;
             if (previousComic < 0) {previousComic = 0};
-            preloadFirst.src = t + n[0], preloadPrevious.src = t + n[previousComic], preloadRandom.src = t + n[randomComic], preloadRandom.setAttribute("data-file", n[randomComic]), preloadNext.src = t + n[nextComic], preloadLast.src = t + n[e];
+            preloadFirst.src = folder + comicChapters[0], preloadPrevious.src = folder + comicChapters[previousComic], preloadRandom.src = folder + comicChapters[randomComic], preloadRandom.setAttribute("data-file", comicChapters[randomComic]), preloadNext.src = folder + comicChapters[nextComic], preloadLast.src = folder + comicChapters[numberOfChapters];
         }
-        if (r != e){s()};
+        if (indexOfChapter != numberOfChapters){s()};
         var randomComic = preCalcRandom();
         preload();
         window.addEventListener('popstate', function(){
-            var currentComic = r;
+            var currentComic = indexOfChapter;
             var currentURL = location.pathname;
             if (currentURL.slice(1) == '') {
-                r = e;
+                indexOfChapter = numberOfChapters;
             } else {
-                r = n.indexOf(currentURL.slice(1) + '.png');
+                indexOfChapter = comicChapters.indexOf(currentURL.slice(1) + '.png');
 
             }
-            if (r == currentComic) {
+            if (indexOfChapter == currentComic) {
                 return;
             };
 
-            o.src = t + n[r];
-            if (r === e){disableLast()} else {enableLast()};
+            o.src = folder + comicChapters[indexOfChapter];
+            if (r === numberOfChapters){disableLast()} else {enableLast()};
             if (r === 0){disableFirst()} else {enableFirst()};
         });
     }();
