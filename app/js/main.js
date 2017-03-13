@@ -89,7 +89,7 @@ var prevBtn = document.querySelectorAll(".prev"),
             indexOfChapter = comicChapters.indexOf(initialURL.slice(1) + '.png'),
             o = document.querySelector("#comic"),
             l = function(comicChapters, folder) {
-                for (var numberOfChapters = comicChapters.length; numberOfChapters > 0;) numberOfChapters--, comicChapters[numberOfChapters].addEventListener("click", t)
+                for (var numberOfChapters = comicChapters.length; numberOfChapters > 0;) numberOfChapters--, comicChapters[numberOfChapters].addEventListener("click",  comicChapters)
             },
             i = function() {
                 indexOfChapter -= 1, 0 > indexOfChapter && (indexOfChapter = 0), s()
