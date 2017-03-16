@@ -105,7 +105,6 @@ var prevBtn = document.querySelectorAll(".prev"),
             },
             p = function() {
                 indexOfChapter = comicChapters.indexOf(preloadRandom.getAttribute("data-file")), randomComic = preCalcRandom(), s();
-
             };
             if (indexOfChapter < 0) {indexOfChapter = numberOfChapters};
         l(prevBtn, i), l(nextBtn, a), l(firstBtn, u), l(lastBtn, c), l(randomBtn, p);
@@ -147,6 +146,7 @@ var prevBtn = document.querySelectorAll(".prev"),
             while (rndNum == indexOfChapter){
                 rndNum = Math.floor(Math.random() * numberOfChapters);
             }
+            console.log(rndNum);
             return rndNum;
         }
         var preload = function() {

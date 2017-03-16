@@ -29,10 +29,27 @@
         h2 {
             font-size: 18px;
         }
+        .controls {
+            margin: 0 auto;
+            width: 470px;
+            display: flex;
+            background-color: #f1f5fb;
+            opacity: 0;
+            animation: fade-in 0.3s ease-in-out 0.5s forwards;
+        }
         .controls button {
+            flex-grow: 1;
             padding: 10px 5px;
             cursor: pointer;
-            transition: opacity 0.1s ease-in-out;
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease;
+            color: #666;
+            opacity: 1;
+        }
+        .controls button:active {
+            transform-origin: 50% 50%;
+            transform: scale(0.95);
+            opacity: 0.8;
+            transition: opacity 0.1s ease-in-out, transform 0.1s ease;
         }
         .controls.disable--last .next, .controls.disable--last .last {
             opacity: 0.1;
@@ -60,6 +77,8 @@
             width: 100%;
             max-width: 470px;
             height: auto;
+            opacity: 0;
+            animation: fade-in 0.3s ease-in-out 0.5s forwards;
         }
 
         @media(max-width: 587px ){
