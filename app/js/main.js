@@ -62,37 +62,37 @@ var prevBtn = document.querySelectorAll(".prev"),
     function() {
         var initialURL = location.pathname;
         var e = strips.length - 1,
-            r = strips.indexOf(initialURL.slice(1) + '.png'),
+            currentStrip = strips.indexOf(initialURL.slice(1) + '.png'),
             comicEl = document.querySelector("#comic"),
             l = function(strips, folder) {
                 for (var e = strips.length; e > 0;) e--, strips[e].addEventListener("click", folder)
             },
             i = function() {
-                r -= 1, 0 > r && (r = 0), s()
+                currentStrip -= 1, 0 > currentStrip && (currentStrip = 0), s()
             },
             a = function() {
-                r += 1, r > e && (r = e), s()
+                currentStrip += 1, currentStrip > e && (currentStrip = e), s()
             },
             u = function() {
-                r = 0, s()
+                currentStrip = 0, s()
             },
             c = function() {
-                r = e, s()
+                currentStrip = e, s()
             },
             p = function() {
-                r = strips.indexOf(preloadRandom.getAttribute("data-file")), randomComic = preCalcRandom(), s();
+                currentStrip = strips.indexOf(preloadRandom.getAttribute("data-file")), randomComic = preCalcRandom(), s();
 
             };
-            if (r < 0) {r = e};
+            if (currentStrip < 0) {currentStrip = e};
         l(prevBtn, i), l(nextBtn, a), l(firstBtn, u), l(lastBtn, c), l(randomBtn, p);
         var s = function() {
             comicEl.src = folder + strips[r];
-            currentURL = strips[r].slice(0, -4);
+            currentURL = strips[currentStrip].slice(0, -4);
             preload();
             history.pushState(null, null, currentURL);
             // Disable first/last and next/previous if last/first comic
-            if (r === e){disableLast()} else {enableLast()};
-            if (r === 0){disableFirst()} else {enableFirst()};
+            if (currentStrip === e){disableLast()} else {enableLast()};
+            if (currentStrip === 0){disableFirst()} else {enableFirst()};
         }
         var disableLast = function () {
             var isLastDisabled = document.querySelector('.disable--last');
@@ -119,37 +119,37 @@ var prevBtn = document.querySelectorAll(".prev"),
             };
         };
         var preCalcRandom = function () {
-            var rndNum = r;
-            while (rndNum == r){
+            var rndNum = currentStrip;
+            while (rndNum == currentStrip){
                 rndNum = Math.floor(Math.random() * e);
             }
             return rndNum;
         }
         var preload = function() {
-            nextComic = r + 1;
+            nextComic = currentStrip + 1;
             if (nextComic > e) {nextComic = e};
-            previousComic = r - 1;
+            previousComic = currentStrip - 1;
             if (previousComic < 0) {previousComic = 0};
             preloadFirst.src = folder + strips[0], preloadPrevious.src = folder + strips[previousComic], preloadRandom.src = folder + strips[randomComic], preloadRandom.setAttribute("data-file", strips[randomComic]), preloadNext.src = folder + strips[nextComic], preloadLast.src = folder + strips[e];
         }
-        if (r != e){s()};
+        if (currentStrip != e){s()};
         var randomComic = preCalcRandom();
         preload();
         window.addEventListener('popstate', function(){
-            var currentComic = r;
+            var currentComic = currentStrip;
             var currentURL = location.pathname;
             if (currentURL.slice(1) == '') {
-                r = e;
+                currentStrip = e;
             } else {
-                r = strips.indexOf(currentURL.slice(1) + '.png');
+                currentStrip = strips.indexOf(currentURL.slice(1) + '.png');
 
             }
-            if (r == currentComic) {
+            if (currentStrip == currentComic) {
                 return;
             };
 
-            comicEl.src = t + n[r];
-            if (r === e){disableLast()} else {enableLast()};
-            if (r === 0){disableFirst()} else {enableFirst()};
+            comicEl.src = t + n[currentStrip];
+            if (currentStrip === e){disableLast()} else {enableLast()};
+            if (currentStrip === 0){disableFirst()} else {enableFirst()};
         });
     }();
