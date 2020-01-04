@@ -63,7 +63,7 @@ var prevBtn = document.querySelectorAll(".prev"),
         var initialURL = location.pathname;
         var e = strips.length - 1,
             r = strips.indexOf(initialURL.slice(1) + '.png'),
-            o = document.querySelector("#comic"),
+            comicEl = document.querySelector("#comic"),
             l = function(strips, folder) {
                 for (var e = strips.length; e > 0;) e--, strips[e].addEventListener("click", folder)
             },
@@ -86,7 +86,7 @@ var prevBtn = document.querySelectorAll(".prev"),
             if (r < 0) {r = e};
         l(prevBtn, i), l(nextBtn, a), l(firstBtn, u), l(lastBtn, c), l(randomBtn, p);
         var s = function() {
-            o.src = folder + strips[r];
+            comicEl.src = folder + strips[r];
             currentURL = strips[r].slice(0, -4);
             preload();
             history.pushState(null, null, currentURL);
@@ -148,7 +148,7 @@ var prevBtn = document.querySelectorAll(".prev"),
                 return;
             };
 
-            o.src = t + n[r];
+            comicEl.src = t + n[r];
             if (r === e){disableLast()} else {enableLast()};
             if (r === 0){disableFirst()} else {enableFirst()};
         });
