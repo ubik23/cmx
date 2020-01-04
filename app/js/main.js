@@ -1,13 +1,13 @@
 
 var translation = {
-    first: "|&lt; Premier",
-    previous: "&lt; Précédent",
-    random: "N'importe",
-    next: "Prochain &gt;",
-    last: "Dernier &gt;|"
+    first: "|&lt; First",
+    previous: "&lt; Previous",
+    random: "Random",
+    next: "Next &gt;",
+    last: "Latest &gt;|"
 };
 
-var t = "assets/";
+var folder = "assets/";
 
 var strips = [
     "slogan.png",
@@ -64,8 +64,8 @@ var prevBtn = document.querySelectorAll(".prev"),
         var e = strips.length - 1,
             r = strips.indexOf(initialURL.slice(1) + '.png'),
             o = document.querySelector("#comic"),
-            l = function(strips, t) {
-                for (var e = strips.length; e > 0;) e--, strips[e].addEventListener("click", t)
+            l = function(strips, folder) {
+                for (var e = strips.length; e > 0;) e--, strips[e].addEventListener("click", folder)
             },
             i = function() {
                 r -= 1, 0 > r && (r = 0), s()
@@ -86,7 +86,7 @@ var prevBtn = document.querySelectorAll(".prev"),
             if (r < 0) {r = e};
         l(prevBtn, i), l(nextBtn, a), l(firstBtn, u), l(lastBtn, c), l(randomBtn, p);
         var s = function() {
-            o.src = t + strips[r];
+            o.src = folder + strips[r];
             currentURL = strips[r].slice(0, -4);
             preload();
             history.pushState(null, null, currentURL);
@@ -130,7 +130,7 @@ var prevBtn = document.querySelectorAll(".prev"),
             if (nextComic > e) {nextComic = e};
             previousComic = r - 1;
             if (previousComic < 0) {previousComic = 0};
-            preloadFirst.src = t + strips[0], preloadPrevious.src = t + strips[previousComic], preloadRandom.src = t + strips[randomComic], preloadRandom.setAttribute("data-file", strips[randomComic]), preloadNext.src = t + strips[nextComic], preloadLast.src = t + strips[e];
+            preloadFirst.src = folder + strips[0], preloadPrevious.src = folder + strips[previousComic], preloadRandom.src = folder + strips[randomComic], preloadRandom.setAttribute("data-file", strips[randomComic]), preloadNext.src = folder + strips[nextComic], preloadLast.src = folder + strips[e];
         }
         if (r != e){s()};
         var randomComic = preCalcRandom();
