@@ -68,24 +68,24 @@ var prevBtn = document.querySelectorAll(".prev"),
                 for (var counter = strips.length; counter > 0;) counter--, strips[counter].addEventListener("click", folder)
             },
             previous = function() {
-                currentStrip -= 1, 0 > currentStrip && (currentStrip = 0), s()
+                currentStrip -= 1, 0 > currentStrip && (currentStrip = 0), showComic()
             },
             next = function() {
-                currentStrip += 1, currentStrip > counter && (currentStrip = counter), s()
+                currentStrip += 1, currentStrip > counter && (currentStrip = counter), showComic()
             },
             first = function() {
-                currentStrip = 0, s()
+                currentStrip = 0, showComic()
             },
             last = function() {
-                currentStrip = counter, s()
+                currentStrip = counter, showComic()
             },
             random = function() {
-                currentStrip = strips.indexOf(preloadRandom.getAttribute("data-file")), randomComic = preCalcRandom(), s();
+                currentStrip = strips.indexOf(preloadRandom.getAttribute("data-file")), randomComic = preCalcRandom(), showComic();
 
             };
-            if (currentStrip < 0) {currentStrip = e};
+            if (currentStrip < 0) {currentStrip = counter};
         l(prevBtn, previous), l(nextBtn, next), l(firstBtn, first), l(lastBtn, last), l(randomBtn, random);
-        var s = function() {
+        var showComic = function() {
             comicEl.src = folder + strips[currentStrip];
             currentURL = strips[currentStrip].slice(0, -4);
             preload();
@@ -132,7 +132,7 @@ var prevBtn = document.querySelectorAll(".prev"),
             if (previousComic < 0) {previousComic = 0};
             preloadFirst.src = folder + strips[0], preloadPrevious.src = folder + strips[previousComic], preloadRandom.src = folder + strips[randomComic], preloadRandom.setAttribute("data-file", strips[randomComic]), preloadNext.src = folder + strips[nextComic], preloadLast.src = folder + strips[counter];
         }
-        if (currentStrip != counter){s()};
+        if (currentStrip != counter){showComic()};
         var randomComic = preCalcRandom();
         preload();
         window.addEventListener('popstate', function(){
