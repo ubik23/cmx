@@ -67,24 +67,24 @@ var prevBtn = document.querySelectorAll(".prev"),
             l = function(strips, folder) {
                 for (var counter = strips.length; counter > 0;) counter--, strips[counter].addEventListener("click", folder)
             },
-            i = function() {
+            previous = function() {
                 currentStrip -= 1, 0 > currentStrip && (currentStrip = 0), s()
             },
-            a = function() {
+            next = function() {
                 currentStrip += 1, currentStrip > counter && (currentStrip = counter), s()
             },
-            u = function() {
+            first = function() {
                 currentStrip = 0, s()
             },
-            c = function() {
+            last = function() {
                 currentStrip = counter, s()
             },
-            p = function() {
+            random = function() {
                 currentStrip = strips.indexOf(preloadRandom.getAttribute("data-file")), randomComic = preCalcRandom(), s();
 
             };
             if (currentStrip < 0) {currentStrip = e};
-        l(prevBtn, i), l(nextBtn, a), l(firstBtn, u), l(lastBtn, c), l(randomBtn, p);
+        l(prevBtn, previous), l(nextBtn, next), l(firstBtn, first), l(lastBtn, last), l(randomBtn, random);
         var s = function() {
             comicEl.src = folder + strips[currentStrip];
             currentURL = strips[currentStrip].slice(0, -4);
