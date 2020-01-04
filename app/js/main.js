@@ -148,7 +148,7 @@ var prevBtn = document.querySelectorAll(".prev"),
                 return;
             };
 
-            comicEl.src = t + strips[currentStrip];
+            comicEl.src = folder + strips[currentStrip];
             if (currentStrip === counter){disableLast()} else {enableLast()};
             if (currentStrip === 0){disableFirst()} else {enableFirst()};
         });
