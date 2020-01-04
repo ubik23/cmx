@@ -86,7 +86,7 @@ var prevBtn = document.querySelectorAll(".prev"),
             if (currentStrip < 0) {currentStrip = e};
         l(prevBtn, i), l(nextBtn, a), l(firstBtn, u), l(lastBtn, c), l(randomBtn, p);
         var s = function() {
-            comicEl.src = folder + strips[r];
+            comicEl.src = folder + strips[currentStrip];
             currentURL = strips[currentStrip].slice(0, -4);
             preload();
             history.pushState(null, null, currentURL);
@@ -148,7 +148,7 @@ var prevBtn = document.querySelectorAll(".prev"),
                 return;
             };
 
-            comicEl.src = t + n[currentStrip];
+            comicEl.src = t + strips[currentStrip];
             if (currentStrip === e){disableLast()} else {enableLast()};
             if (currentStrip === 0){disableFirst()} else {enableFirst()};
         });
